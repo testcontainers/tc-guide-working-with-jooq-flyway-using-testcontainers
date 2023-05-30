@@ -1,6 +1,7 @@
 package com.testcontainers.demo.domain;
 
-import com.testcontainers.demo.jooq.tables.Users;
+import static com.testcontainers.demo.jooq.tables.Users.USERS;
+
 import com.testcontainers.demo.jooq.tables.records.UsersRecord;
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -18,24 +19,28 @@ class UserRepository {
 
     public User createUser(User user) {
         return this.dsl
-                .insertInto(Users.USERS)
-                .set(Users.USERS.NAME, user.name())
-                .set(Users.USERS.EMAIL, user.email())
-                .set(Users.USERS.CREATED_AT, LocalDateTime.now())
+                .insertInto(USERS)
+                .set(USERS.NAME, user.name())
+                .set(USERS.EMAIL, user.email())
+                .set(USERS.CREATED_AT, LocalDateTime.now())
                 .returning()
                 // .fetchOne(record -> new User(record.getId(), record.getName(), record.getEmail()))
-                .fetchOne(new UserRecordMapper());
+                .fetchOne(UserRecordMapper.INSTANCE);
     }
 
     public Optional<User> getUserByEmail(String email) {
         return this.dsl
-                .selectFrom(Users.USERS)
-                .where(Users.USERS.EMAIL.equalIgnoreCase(email))
+                .selectFrom(USERS)
+                .where(USERS.EMAIL.equalIgnoreCase(email))
                 // .fetchOptional(record -> new User(record.getId(), record.getName(), record.getEmail()));
-                .fetchOptional(new UserRecordMapper());
+                .fetchOptional(UserRecordMapper.INSTANCE);
     }
 
     static class UserRecordMapper implements RecordMapper<UsersRecord, User> {
+        public static final UserRecordMapper INSTANCE = new UserRecordMapper();
+
+        private UserRecordMapper() {}
+
         @Override
         public User map(UsersRecord record) {
             return new User(record.getId(), record.getName(), record.getEmail());
