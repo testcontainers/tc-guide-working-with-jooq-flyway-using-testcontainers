@@ -1,12 +1,8 @@
-create sequence user_id_seq start with 10 increment by 10;
-create sequence post_id_seq start with 10 increment by 10;
-create sequence comment_id_seq start with 10 increment by 10;
-
 create table users
 (
-    id         bigint default nextval('user_id_seq') not null,
-    name       varchar                               not null,
-    email      varchar                               not null,
+    id         bigserial not null,
+    name       varchar   not null,
+    email      varchar   not null,
     created_at timestamp,
     updated_at timestamp,
     primary key (id),
@@ -15,10 +11,10 @@ create table users
 
 create table posts
 (
-    id         bigint default nextval('post_id_seq') not null,
-    title      varchar                               not null,
-    content    varchar                               not null,
-    created_by bigint references users (id)          not null,
+    id         bigserial                    not null,
+    title      varchar                      not null,
+    content    varchar                      not null,
+    created_by bigint references users (id) not null,
     created_at timestamp,
     updated_at timestamp,
     primary key (id)
@@ -26,11 +22,15 @@ create table posts
 
 create table comments
 (
-    id         bigint default nextval('comment_id_seq') not null,
-    name       varchar                                  not null,
-    content    varchar                                  not null,
-    post_id    bigint references posts (id)             not null,
+    id         bigserial                    not null,
+    name       varchar                      not null,
+    content    varchar                      not null,
+    post_id    bigint references posts (id) not null,
     created_at timestamp,
     updated_at timestamp,
     primary key (id)
 );
+
+ALTER SEQUENCE users_id_seq RESTART WITH 101;
+ALTER SEQUENCE posts_id_seq RESTART WITH 101;
+ALTER SEQUENCE comments_id_seq RESTART WITH 101;
