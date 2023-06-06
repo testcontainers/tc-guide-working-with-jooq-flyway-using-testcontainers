@@ -1,5 +1,5 @@
 ---
-title: "Working with JOOQ and Flyway using Testcontainers"
+title: "Working with jOOQ and Flyway using Testcontainers"
 date: 2023-06-05T09:39:58+05:30
 draft: false
 description: This guide will explain how to test your jOOQ and Flyway based application by generating java code from database using Testcontainers.
@@ -17,11 +17,11 @@ tags:
 
 In this guide, you will learn how to
 
-* Create a Spring Boot application with JOOQ support
-* Generate JOOQ code using Testcontainers, Flyway and Maven Plugin
-* Implement basic database operations using JOOQ
-* Implement logic to load complex object graph using JOOQ
-* Test the JOOQ persistence layer using Testcontainers
+* Create a Spring Boot application with jOOQ support
+* Generate jOOQ code using Testcontainers, Flyway and Maven Plugin
+* Implement basic database operations using jOOQ
+* Implement logic to load complex object graph using jOOQ
+* Test the jOOQ persistence layer using Testcontainers
 
 == Prerequisites
 * Java 17+

@@ -1,6 +1,6 @@
-# Working with JOOQ and Flyway using Testcontainers Guide
+# Working with jOOQ and Flyway using Testcontainers Guide
 
-This is sample code for [Working with JOOQ and Flyway using Testcontainers](https://testcontainers.com/guides/working-with-jooq-flyway-using-testcontainers) guide.
+This is sample code for [Working with jOOQ and Flyway using Testcontainers](https://testcontainers.com/guides/working-with-jooq-flyway-using-testcontainers) guide.
 
 ## 1. Setup Environment
 Make sure you have Java 8+ and a [compatible Docker environment](https://www.testcontainers.org/supported_docker_environment/) installed.
