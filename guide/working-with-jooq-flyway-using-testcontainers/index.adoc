@@ -32,14 +32,16 @@ In this guide, you will learn how to
 We are going to create a Spring Boot project using https://www.jooq.org/[jOOQ] together with Postgres.
 We will create our database tables by using https://flywaydb.org/[Flyway] Database migrations.
 We will configure https://github.com/testcontainers/testcontainers-jooq-codegen-maven-plugin[testcontainers-jooq-codegen-maven-plugin] to generate jOOQ code using Testcontainers and Flyway
-migration scripts. We will implement our persistence layer repositories using jOOQ to manage Users, Posts, and Comments.
+migration scripts.
+
+We will implement our persistence layer repositories using jOOQ to manage Users, Posts, and Comments.
 Then we will test the repositories using Spring Boot testing support and Testcontainers Postgres module.
 
 == Getting Started
 Create a new Spring Boot project from https://start.spring.io/[Spring Initializr] by selecting Maven as build tool and add the starters
 *JOOQ Access Layer*, *Flyway Migration*, *Spring Boot DevTools*, *PostgreSQL Driver* and *Testcontainers*.
 
-jOOQ (jOOQ Object Oriented Querying) is a popular open-source library that provides a fluent API for building typesafe SQL queries.
+*jOOQ (jOOQ Object Oriented Querying)* is a popular open-source library that provides a fluent API for building typesafe SQL queries.
 
 In order to leverage the benefits of TypeSafe DSL provided by jOOQ, we need to generate Java code from our database tables, views, and other objects, which will allow us to interact with the database using a fluent and intuitive API.
 
@@ -242,7 +244,9 @@ Let's understand what is going on in this test:
 
 == Write Integration Test using @SpringBootTest
 
-We can write integration tests using @SpringBootTest annotation which will load the entire application context. While you can use the Testcontainers special JDBC url with @SpringBootTest too, let us see how we can use Testcontainers with ServiceConnection support introduced in Spring Boot 3.1.0.
+We can write integration tests using `@SpringBootTest` annotation which will load the entire application context.
+While you can use the Testcontainers special JDBC url with `@SpringBootTest` too,
+let us see how we can use Testcontainers with *ServiceConnection* support introduced in Spring Boot 3.1.0.
 
 [TIP]
 Learn more about the Testcontainers support introduced in Spring Boot 3.1.0 at
@@ -281,7 +285,7 @@ loading the ManyToOne association of Post-to-User and https://www.jooq.org/doc/l
 To learn more about jOOQ's MULTISET feature, please refer https://blog.jooq.org/jooq-3-15s-new-multiset-operator-will-change-how-you-think-about-sql/
 
 [TIP]
-From jOOQ 3.19, fetching the associations using MULTISET is further simplified using implicit path correlations feature.
+From jOOQ 3.19, fetching the associations using MULTISET is further simplified using https://www.jooq.org/doc/dev/manual/sql-building/sql-statements/select-statement/implicit-path-correlation/[implicit path correlations feature].
 
 We can write integration test for `PostRepository` as follows:
 
