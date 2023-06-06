@@ -96,7 +96,6 @@
                                     filesystem:src/main/resources/db/migration
                                 </locations>
                             </flyway>
-                            <!-- Generator parameters -->
                             <jooq>
                                 <generator>
                                     <database>
