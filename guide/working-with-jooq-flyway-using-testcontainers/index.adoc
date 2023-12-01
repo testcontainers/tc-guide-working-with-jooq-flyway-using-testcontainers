@@ -90,8 +90,8 @@ Configure the *testcontainers-jooq-codegen-maven-plugin* in `pom.xml` as follows
 [source,xml]
 ----
 <properties>
-    <testcontainers.version>1.18.3</testcontainers.version>
-    <testcontainers-jooq-codegen-maven-plugin.version>0.0.2</testcontainers-jooq-codegen-maven-plugin.version>
+    <testcontainers.version>1.19.3</testcontainers.version>
+    <testcontainers-jooq-codegen-maven-plugin.version>0.0.3</testcontainers-jooq-codegen-maven-plugin.version>
     <jooq.version>3.18.3</jooq.version>
     <postgresql.version>42.6.0</postgresql.version>
 </properties>
@@ -124,7 +124,7 @@ Configure the *testcontainers-jooq-codegen-maven-plugin* in `pom.xml` as follows
                     <configuration>
                         <database>
                             <type>POSTGRES</type>
-                            <containerImage>postgres:15.3-alpine</containerImage>
+                            <containerImage>postgres:16-alpine</containerImage>
                         </database>
                         <flyway>
                             <locations>
@@ -155,7 +155,7 @@ Configure the *testcontainers-jooq-codegen-maven-plugin* in `pom.xml` as follows
 Let's understand the plugin configuration.
 
 * As we are using PostgreSQL database, we have configured the postgres JDBC driver and Testcontainers postgresql libraries as dependencies of the plugin.
-* Under `<configuration>/<database>` section, we have configured the type of the database, POSTGRES, that we want to use it for our code generation, and specified the Docker image name, `postgres:15.3-alpine`, which will be used to create the database instance.
+* Under `<configuration>/<database>` section, we have configured the type of the database, POSTGRES, that we want to use it for our code generation, and specified the Docker image name, `postgres:16-alpine`, which will be used to create the database instance.
 * Under `<configuration>/<flyway>` section we have specified the location of Flyway migration scripts path.
 * We have also configured the *packageName* and *target* location for the generated code. You can configure all the configuration options supported by the official *jooq-code-generator* plugin.
 

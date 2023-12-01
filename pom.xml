@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.0</version>
+        <version>3.2.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.testcontainers</groupId>
@@ -17,7 +17,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>17</java.version>
-        <testcontainers-jooq-codegen-maven-plugin.version>0.0.2</testcontainers-jooq-codegen-maven-plugin.version>
+        <testcontainers-jooq-codegen-maven-plugin.version>0.0.3</testcontainers-jooq-codegen-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -89,7 +89,7 @@
                         <configuration>
                             <database>
                                 <type>POSTGRES</type>
-                                <containerImage>postgres:15.3-alpine</containerImage>
+                                <containerImage>postgres:16-alpine</containerImage>
                             </database>
                             <flyway>
                                 <locations>
@@ -116,14 +116,23 @@
             <plugin>
                 <groupId>com.diffplug.spotless</groupId>
                 <artifactId>spotless-maven-plugin</artifactId>
-                <version>2.37.0</version>
+                <version>2.41.0</version>
                 <configuration>
                     <java>
                         <importOrder />
                         <removeUnusedImports />
-                        <palantirJavaFormat>
-                            <version>2.30.0</version>
-                        </palantirJavaFormat>
+                        <prettier>
+                            <devDependencies>
+                                <prettier>3.0.3</prettier>
+                                <prettier-plugin-java>2.3.0</prettier-plugin-java>
+                            </devDependencies>
+                            <config>
+                                <parser>java</parser>
+                                <tabWidth>2</tabWidth>
+                                <printWidth>80</printWidth>
+                                <plugins>prettier-plugin-java</plugins>
+                            </config>
+                        </prettier>
                         <formatAnnotations />
                     </java>
                 </configuration>
